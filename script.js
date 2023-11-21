@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function (){
     createBoard(16);
+
+    let btn_popup = document.querySelector ("#popup");
+    btn_popup.addEventListener("click", function() {
+        let size = getSize();
+        createBoard(size);
+
+    })
     console.log("hi");
 })
 
@@ -12,7 +19,9 @@ function createBoard (size){
     let numDivs = size *size;
     for (let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
-        div.style.backgroundColor = "yellow";
+        div.addEventListener("mouseover", function(){
+            div.style.backgroundColor = "black";
+        })
         board.insertAdjacentElement("beforeend", div);
     }
 }
@@ -28,6 +37,7 @@ function getSize() {
     }
     else{
         message.innerHTML = ("Number accepted")
+        return input;
     }
 }
 
